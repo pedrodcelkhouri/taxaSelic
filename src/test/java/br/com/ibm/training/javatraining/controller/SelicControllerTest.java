@@ -1,8 +1,8 @@
-package br.com.ibm.interest.rates.controller;
+package br.com.ibm.training.javatraining.controller;
 
-import br.com.ibm.interest.rates.dto.InterestRatesRequest;
-import br.com.ibm.interest.rates.entity.InterestRatesEntity;
-import br.com.ibm.interest.rates.service.InterestRatesService;
+import br.com.ibm.training.javatraining.dto.SelicRequest;
+import br.com.ibm.training.javatraining.entity.SelicEntity;
+import br.com.ibm.training.javatraining.service.SelicService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -34,7 +34,7 @@ public class SelicControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
-    private InterestRatesService interestRatesService;
+    private SelicService interestRatesService;
 
     @Test
     public void salvarComSucesso() throws Exception {
@@ -44,11 +44,11 @@ public class SelicControllerTest {
         String data = "01/06/1986";
         Double valor = Double.parseDouble("1.26");
 
-        InterestRatesEntity dadoInterestRatesEntity = new InterestRatesEntity();
+        SelicEntity dadoInterestRatesEntity = new SelicEntity();
         dadoInterestRatesEntity.setValor(valor);
         dadoInterestRatesEntity.setData(LocalDate.parse(data, formatter));
 
-        List<InterestRatesRequest> interestRatesRequest = new ArrayList<>();
+        List<SelicRequest> interestRatesRequest = new ArrayList<>();
 
         when(interestRatesService.saveTaxaSelic())
                 .thenReturn((interestRatesRequest));

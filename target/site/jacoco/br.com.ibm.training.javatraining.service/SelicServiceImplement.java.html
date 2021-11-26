@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SelicServiceImplement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">taxa_selic</a> &gt; <a href="index.source.html" class="el_package">br.com.ibm.training.javatraining.service</a> &gt; <span class="el_source">SelicServiceImplement.java</span></div><h1>SelicServiceImplement.java</h1><pre class="source lang-java linenums">package br.com.ibm.training.javatraining.service;
+
+import br.com.ibm.training.javatraining.dto.SelicRequest;
+import br.com.ibm.training.javatraining.entity.SelicEntity;
+import br.com.ibm.training.javatraining.integration.client.SelicFeign;
+import br.com.ibm.training.javatraining.repositories.SelicRepository;
+import javassist.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
+<span class="fc" id="L20">public class SelicServiceImplement implements SelicService {</span>
+    @Autowired
+    private SelicFeign interestRatesFeignClient;
+
+    @Autowired
+    private SelicRepository interestRatesRepository;
+
+
+    @Override
+    public List&lt;SelicRequest&gt; saveTaxaSelic() {
+
+<span class="nc" id="L31">        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(&quot;dd/MM/yyyy&quot;);</span>
+
+<span class="nc" id="L33">        List&lt;SelicRequest&gt; interestRatesRequest = interestRatesFeignClient.onboardingDadosSelic();</span>
+<span class="nc" id="L34">        interestRatesRequest.forEach(taxaSelicRequest1 -&gt; {LocalDate transformacaoDeData = LocalDate.parse(String.valueOf(taxaSelicRequest1.getData()), dtf);</span>
+<span class="nc" id="L35">            Double transformacaoDeValor = Double.parseDouble(String.valueOf(taxaSelicRequest1.getValor()));</span>
+
+<span class="nc" id="L37">            SelicEntity dadosInterestRatesEntity = new SelicEntity();</span>
+<span class="nc" id="L38">            dadosInterestRatesEntity.setData(transformacaoDeData);</span>
+<span class="nc" id="L39">            dadosInterestRatesEntity.setValor(transformacaoDeValor);</span>
+<span class="nc" id="L40">            interestRatesRepository.save(dadosInterestRatesEntity);</span>
+
+<span class="nc" id="L42">        });</span>
+<span class="nc" id="L43">        return interestRatesRequest;</span>
+    }
+
+
+
+    @Override
+    public Double getTaxaSelicByYear(int ano) {
+
+<span class="nc" id="L51">        List&lt;SelicEntity&gt; acumuloAnualEntities = interestRatesRepository.findAll();</span>
+<span class="nc" id="L52">        Double resposta = acumuloAnualEntities.stream()</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">                .filter(taxaSelic -&gt; taxaSelic.getData().getYear() == ano)</span>
+<span class="nc" id="L54">                .map(taxaSelic -&gt; taxaSelic.getValor())</span>
+<span class="nc" id="L55">                .reduce(0.0, Double::sum);</span>
+
+<span class="nc" id="L57">        return resposta;</span>
+    }
+
+    @Override
+    public List&lt;SelicEntity&gt; getAllTaxaSelics() throws NotFoundException {
+
+<span class="nc" id="L63">        List&lt;SelicEntity&gt; dadosInterestRatesEntity = interestRatesRepository.findAll();</span>
+
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        if (dadosInterestRatesEntity.isEmpty()) {</span>
+<span class="nc" id="L66">            throw new NotFoundException(&quot;Não há registro dessa data.&quot;);</span>
+        }
+<span class="nc" id="L68">        return dadosInterestRatesEntity;</span>
+    }
+
+    @Override
+    public SelicEntity updateTaxaSelic(int mes, int ano, Double valor) throws IOException {
+
+<span class="nc" id="L74">        List&lt;SelicEntity&gt; acumuloEntities = interestRatesRepository.findAll();</span>
+
+<span class="nc" id="L76">        Optional&lt;SelicEntity&gt; respostaOptional = acumuloEntities.stream()</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">                .filter(taxaSelic -&gt; taxaSelic.getData().getYear() == ano)</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">                .filter(taxaSelic -&gt; taxaSelic.getData().getMonth() == Month.of(mes))</span>
+<span class="nc" id="L79">                .findFirst();</span>
+
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        if (!respostaOptional.isPresent()){</span>
+<span class="nc" id="L82">            throw new IOException(&quot;Não encontrou.&quot;);</span>
+        }
+<span class="nc" id="L84">        SelicEntity resposta = respostaOptional.get();</span>
+
+<span class="nc" id="L86">        resposta.setValor(valor);</span>
+
+<span class="nc" id="L88">        return interestRatesRepository.save(resposta);</span>
+    }
+
+    @Override
+    public void deleteTaxaSelic(int codigo_Serie) {
+
+<span class="nc" id="L94">        List&lt;SelicEntity&gt; acumuloEntities = interestRatesRepository.findAll();</span>
+
+<span class="nc" id="L96">        List&lt;SelicEntity&gt; resposta = acumuloEntities.stream()</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">                .filter(taxaSelic -&gt; taxaSelic.getCodigo_Serie() == codigo_Serie)</span>
+<span class="nc" id="L98">                .collect(Collectors.toList());</span>
+
+<span class="nc" id="L100">        resposta.forEach(taxaSelic -&gt; {</span>
+<span class="nc" id="L101">            interestRatesRepository.deleteById(taxaSelic.getCodigo_Serie());</span>
+<span class="nc" id="L102">        });</span>
+<span class="nc" id="L103">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
