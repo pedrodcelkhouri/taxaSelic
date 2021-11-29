@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(&quot;/v1/taxaselic&quot;)
-<span class="nc" id="L18">public class SelicController {</span>
+<span class="fc" id="L18">public class SelicController {</span>
 
     @Autowired
     private SelicService interestRatesService;
@@ -25,7 +25,7 @@ import java.util.List;
     @ResponseStatus(HttpStatus.CREATED)
     public List&lt;SelicRequest&gt; saveTaxaSelic() {
 
-<span class="nc" id="L28">        return interestRatesService.saveTaxaSelic();</span>
+<span class="fc" id="L28">        return interestRatesService.saveTaxaSelic();</span>
     }
 
     @ApiOperation(value = &quot;Atualizar os dados especificados&quot;)
@@ -40,7 +40,7 @@ import java.util.List;
     @GetMapping(&quot;/{ano}&quot;)
     public Double getTaxaSelicByYear(@PathVariable(&quot;ano&quot;) int ano) {
 
-<span class="nc" id="L43">        return interestRatesService.getTaxaSelicByYear(ano);</span>
+<span class="fc" id="L43">        return interestRatesService.getTaxaSelicByYear(ano);</span>
     }
 
     @ApiOperation( value = &quot;Retornar todos os dados da Taxa Selic&quot;)

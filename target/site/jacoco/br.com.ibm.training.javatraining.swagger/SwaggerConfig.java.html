@@ -12,26 +12,26 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Component
 @EnableSwagger2
-<span class="nc" id="L15">public class SwaggerConfig {</span>
+<span class="fc" id="L15">public class SwaggerConfig {</span>
 
     @Bean
     public Docket api() {
-<span class="nc" id="L19">        return new Docket(DocumentationType.SWAGGER_2)</span>
-<span class="nc" id="L20">                .select()</span>
-<span class="nc" id="L21">                .apis(RequestHandlerSelectors.any())</span>
-<span class="nc" id="L22">                .paths(PathSelectors.any())</span>
-<span class="nc" id="L23">                .build()</span>
-<span class="nc" id="L24">                .apiInfo(metaData());</span>
+<span class="fc" id="L19">        return new Docket(DocumentationType.SWAGGER_2)</span>
+<span class="fc" id="L20">                .select()</span>
+<span class="fc" id="L21">                .apis(RequestHandlerSelectors.any())</span>
+<span class="fc" id="L22">                .paths(PathSelectors.any())</span>
+<span class="fc" id="L23">                .build()</span>
+<span class="fc" id="L24">                .apiInfo(metaData());</span>
     }
 
     private ApiInfo metaData() {
-<span class="nc" id="L28">        return new ApiInfoBuilder()</span>
-<span class="nc" id="L29">                .title(&quot;API Restful - Taxa Selic&quot;)</span>
-<span class="nc" id="L30">                .description(&quot;\&quot;Developed by Pedro El-Khouri\&quot;&quot;)</span>
-<span class="nc" id="L31">                .version(&quot;0.0.1&quot;)</span>
-<span class="nc" id="L32">                .license(&quot;Apache License Version 2.0&quot;)</span>
-<span class="nc" id="L33">                .licenseUrl(&quot;https://www.apache.org/licenses/LICENSE-2.0\&quot;&quot;)</span>
-<span class="nc" id="L34">                .build();</span>
+<span class="fc" id="L28">        return new ApiInfoBuilder()</span>
+<span class="fc" id="L29">                .title(&quot;API Restful - Taxa Selic&quot;)</span>
+<span class="fc" id="L30">                .description(&quot;\&quot;Developed by Pedro El-Khouri\&quot;&quot;)</span>
+<span class="fc" id="L31">                .version(&quot;0.0.1&quot;)</span>
+<span class="fc" id="L32">                .license(&quot;Apache License Version 2.0&quot;)</span>
+<span class="fc" id="L33">                .licenseUrl(&quot;https://www.apache.org/licenses/LICENSE-2.0\&quot;&quot;)</span>
+<span class="fc" id="L34">                .build();</span>
     }
 }
 

@@ -1,5 +1,5 @@
+br\com\ibm\training\javatraining\integration\SelicFeign.class
 br\com\ibm\training\javatraining\dto\SelicRequest.class
-br\com\ibm\training\javatraining\integration\client\SelicFeign.class
 br\com\ibm\training\javatraining\service\SelicService.class
 br\com\ibm\training\javatraining\controller\SelicController.class
 br\com\ibm\training\javatraining\service\SelicServiceImplement.class

@@ -37,7 +37,7 @@ public class SelicControllerTest {
     private SelicService interestRatesService;
 
     @Test
-    public void salvamento() throws Exception {
+    public void salvarComSucesso() throws Exception {
 
         String data = "01/06/1986";
         Double valor = Double.parseDouble("1.26");
@@ -60,4 +60,18 @@ public class SelicControllerTest {
 
         Assert.assertNotNull(resposta);
     }
+
+    @Test
+    public void getByYearComSucesso() throws Exception
+    {
+
+        int ano = 2001;
+
+        MvcResult resposta = mockMvc.perform(MockMvcRequestBuilders.get("/v1/taxaselic/{ano}", ano))
+                .andExpect(MockMvcResultMatchers.status().is(200)).andReturn();
+
+        Assert.assertNotNull(resposta);
+
+    }
+
 }
