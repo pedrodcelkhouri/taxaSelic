@@ -1,65 +1,67 @@
-# taxa_selic
+## Desafio Interest Rates IBM
 
-# Nome do seu projeto
-> Um resumo curto sobre o que o seu projeto faz
+> Projeto com o objetivo de ler, salvar e apresentar o acúmulo de dados da taxa SELIC disponibilizadas pelo Banco Central.
 
-Um ou dois parágrafos sobre seu projeto e
-o que ele faz.
-
-![](pag.png)
-
-## Instalação
-
-Mac OS X & Linux:
-
-```sh
-npm install --save
-```
-
-Windows:
-
-```sh
-edit autoexec.bat
-```
-
-## Exemplo de uso
-
-Alguns exemplos que motivariam as pessoas a
-utilizarem seu projeto ou que demonstrasse
-que este é últil para alguma coisa. Divida
-esta parte em partes menores e se possível
-coloque algum código ou prints de telas.
-
-## Ambiente de Desenvolvimento
-
-Descrever como instalar e preparar qualquer
-dependência de desenvolvimento para que
-seu projeto possa ser executado localmente
-e pessoas possam contribuir com o mesmo.
-Se possível forneça as informações para
-diferentes plataformas, exemplo Windows,
-Linux e Mac OS.
-
-## Histórico de Atualizações
-
-* 0.2.1
-    * CHANGE: Atualização dos docs (o código não foi alterado)
-* 0.2.0
-    * CHANGE: Removida a função `setPadrãoXYZ()`
-    * ADD: Adicionado a função `inicializar()`
-* 0.1.1
-    * FIX: Crash quando executava `escrever()` (Obrigado ao @Contribuidor)
-* 0.1.0
-    * O primeiro lançamento estável
-    * CHANGE: Renomeado de `Projeto XYZ` para `Projeto ABC`
-* 0.0.1
-    * Projeto inicial
+Através dos dados de Taxa SELIC disponibilizados pelo Banco Central, esse projeto é formulado com o desígnio de gerar 
+uma API que tenha a capacidade de ler, salvar e apresentar esses dados acumulados, também de forma anual ao cliente.
+Assim como disponibilizar o acesso à ferramentas de buscas e afins desses dados.
 
 
-## Meta
+---
 
-Seu nome - [@SeuTwitter](https://twitter.com/seuTwitter) - seuemail@gmail.com
+## 🧰 Dependências de Desenvolvimento
 
-Distribuído sobre a licença. Veja `LICENÇA` para mais informações.
+- [JDK17](https://www.java.com/pt-BR/)
+- [IntelliJ](https://www.jetbrains.com/pt-br/idea/)
+- [H2](https://www.h2database.com/html/main.html)
+- [Maven](https://maven.apache.org/what-is-maven.html)
+- [SpringBoot](https://spring.io/projects/spring-boot)
+- [Swagger](https://swagger.io/)
+- [Postman](https://www.postman.com/)
 
-[https://github.com/seuusuaurio/seuprojeto](https://github.com/seusuario)
+## ⚙️Ambiente de Desenvolvimento
+
+Após clonar o projeto que consta nesse repositório, rode o seguinte comandoo terminal da IDE:
+
+``
+mvn clean install
+``
+
+Na IDE, rode a classe principal **SelicApplication** no diretório:
+
+``
+br.com.ibm.training.javatraining
+``
+
+Após acessar o banco de dados "H2 database" pelo URL:
+
+``
+http://localhost:8082/
+``
+
+Utilize as seguintes configurações:
+
+Driver Class: org.h2.Driver
+
+JDBC URL: jdbc:h2:mem:app
+
+User Name: sa
+
+Password:
+
+Após o acesso ao banco de dados, pode-se testar a aplicação pelo Postman utilizando a URL abaixo como base para os possíveis comandos:
+
+``
+http://localhost:8082/v1/taxaselic/
+``
+
+Através da URL abaixo, pode-se acessar a documentação contendo os endpoints no **Swagger**:
+
+``
+http://http://localhost:8082/swagger-ui.html#/
+``
+
+---
+
+✔️ Developed by Pedro El-Khouri `pedroelkhouri@ibm.com`
+

@@ -20,7 +20,7 @@ public class SelicController {
     @Autowired
     private SelicService interestRatesService;
 
-    @ApiOperation( value = "Criar uma tabela com os dados da Api Selic")
+    @ApiOperation( value = "Gerar a tabela de dados da Api da Taxa Selic")
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public List<SelicRequest> saveTaxaSelic() {
@@ -28,7 +28,7 @@ public class SelicController {
         return interestRatesService.saveTaxaSelic();
     }
 
-    @ApiOperation(value = "Criar uma tabela ----------")
+    @ApiOperation(value = "Atualizar os dados especificados")
     @PatchMapping("/ ")
     public SelicEntity updateTaxaSelic(@RequestParam("mes") int mes,
                                        @RequestParam("ano") int ano,
@@ -36,22 +36,22 @@ public class SelicController {
         return interestRatesService.updateTaxaSelic(mes, ano, valor);
     }
 
-    @ApiOperation( value = "Criar uma tabela ------")
+    @ApiOperation( value = "Gerar a Taxa Selic por ano")
     @GetMapping("/{ano}")
     public Double getTaxaSelicByYear(@PathVariable("ano") int ano) {
 
         return interestRatesService.getTaxaSelicByYear(ano);
     }
 
-    @ApiOperation( value = "Criar uma tabela ------------")
+    @ApiOperation( value = "Retornar os dados da Taxa Selic")
     @GetMapping("/taxa-selics")
     public ResponseEntity<List<SelicEntity>> buscaTaxaSelics() throws NotFoundException {
         List<SelicEntity> dadosInterestRatesEntity = interestRatesService.getAllTaxaSelics();
         return new ResponseEntity<>(dadosInterestRatesEntity, HttpStatus.ACCEPTED);
     }
 
-    @ApiOperation( value = "Criar uma tabela ----------")
-    @GetMapping("/deletar/{codigo_Serie}")
+    @ApiOperation( value = "Deletar os dados especificados")
+    @DeleteMapping("/deletar/{codigo_Serie}")
     public String deleteTaxaSelic(@PathVariable("codigo_Serie") int codigo_Serie)
     {
         try

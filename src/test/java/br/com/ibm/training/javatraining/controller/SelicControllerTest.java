@@ -39,7 +39,7 @@ public class SelicControllerTest {
     @Test
     public void salvarComSucesso() throws Exception {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         String data = "01/06/1986";
         Double valor = Double.parseDouble("1.26");
