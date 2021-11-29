@@ -37,12 +37,12 @@ public class SelicControllerTest {
     private SelicService interestRatesService;
 
     @Test
-    public void salvarComSucesso() throws Exception {
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public void salvamento() throws Exception {
 
         String data = "01/06/1986";
         Double valor = Double.parseDouble("1.26");
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 
         SelicEntity dadoInterestRatesEntity = new SelicEntity();
         dadoInterestRatesEntity.setValor(valor);
@@ -60,6 +60,4 @@ public class SelicControllerTest {
 
         Assert.assertNotNull(resposta);
     }
-
-
 }

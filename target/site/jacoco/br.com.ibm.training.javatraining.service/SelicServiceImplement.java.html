@@ -2,7 +2,7 @@
 
 import br.com.ibm.training.javatraining.dto.SelicRequest;
 import br.com.ibm.training.javatraining.entity.SelicEntity;
-import br.com.ibm.training.javatraining.integration.client.SelicFeign;
+import br.com.ibm.training.javatraining.integration.SelicFeign;
 import br.com.ibm.training.javatraining.repositories.SelicRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-<span class="fc" id="L20">public class SelicServiceImplement implements SelicService {</span>
+<span class="nc" id="L20">public class SelicServiceImplement implements SelicService {</span>
     @Autowired
     private SelicFeign interestRatesFeignClient;
 

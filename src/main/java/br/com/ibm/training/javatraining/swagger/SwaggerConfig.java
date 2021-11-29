@@ -27,7 +27,7 @@ public class SwaggerConfig {
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
                 .title("API Restful - Taxa Selic")
-                .description("\"Desenvolvido por Pedro El-Khouri\"")
+                .description("\"Developed by Pedro El-Khouri\"")
                 .version("0.0.1")
                 .license("Apache License Version 2.0")
                 .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")

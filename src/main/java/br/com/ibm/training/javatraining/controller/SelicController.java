@@ -43,7 +43,7 @@ public class SelicController {
         return interestRatesService.getTaxaSelicByYear(ano);
     }
 
-    @ApiOperation( value = "Retornar os dados da Taxa Selic")
+    @ApiOperation( value = "Retornar todos os dados da Taxa Selic")
     @GetMapping("/taxa-selics")
     public ResponseEntity<List<SelicEntity>> buscaTaxaSelics() throws NotFoundException {
         List<SelicEntity> dadosInterestRatesEntity = interestRatesService.getAllTaxaSelics();

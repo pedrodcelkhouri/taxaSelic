@@ -6,7 +6,7 @@ Através dos dados de Taxa SELIC disponibilizados pelo Banco Central, esse proje
 uma API que tenha a capacidade de ler, salvar e apresentar esses dados acumulados, também de forma anual ao cliente.
 Assim como disponibilizar o acesso à ferramentas de buscas e afins desses dados.
 
-As Dependências de Desenvolvimento, assim como os detalhes do Ambiente de Desenvolvimento e sua ordem de execução são explicitados abaixo.
+As **Dependências de Desenvolvimento**, assim como os detalhes do **Ambiente de Desenvolvimento** e sua ordem de execução são explicitados abaixo.
 
 ---
 

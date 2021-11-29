@@ -15,20 +15,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping(&quot;/v1/taxaselic&quot;)
-<span class="fc" id="L18">public class SelicController {</span>
+<span class="nc" id="L18">public class SelicController {</span>
 
     @Autowired
     private SelicService interestRatesService;
 
-    @ApiOperation( value = &quot;Criar uma tabela com os dados da Api Selic&quot;)
+    @ApiOperation( value = &quot;Salvar os dados da Api da Taxa Selic&quot;)
     @PostMapping(&quot;/save&quot;)
     @ResponseStatus(HttpStatus.CREATED)
     public List&lt;SelicRequest&gt; saveTaxaSelic() {
 
-<span class="fc" id="L28">        return interestRatesService.saveTaxaSelic();</span>
+<span class="nc" id="L28">        return interestRatesService.saveTaxaSelic();</span>
     }
 
-    @ApiOperation(value = &quot;Criar uma tabela ----------&quot;)
+    @ApiOperation(value = &quot;Atualizar os dados especificados&quot;)
     @PatchMapping(&quot;/ &quot;)
     public SelicEntity updateTaxaSelic(@RequestParam(&quot;mes&quot;) int mes,
                                        @RequestParam(&quot;ano&quot;) int ano,
@@ -36,22 +36,22 @@ import java.util.List;
 <span class="nc" id="L36">        return interestRatesService.updateTaxaSelic(mes, ano, valor);</span>
     }
 
-    @ApiOperation( value = &quot;Criar uma tabela ------&quot;)
+    @ApiOperation( value = &quot;Gerar a Taxa Selic por ano&quot;)
     @GetMapping(&quot;/{ano}&quot;)
     public Double getTaxaSelicByYear(@PathVariable(&quot;ano&quot;) int ano) {
 
 <span class="nc" id="L43">        return interestRatesService.getTaxaSelicByYear(ano);</span>
     }
 
-    @ApiOperation( value = &quot;Criar uma tabela ------------&quot;)
+    @ApiOperation( value = &quot;Retornar todos os dados da Taxa Selic&quot;)
     @GetMapping(&quot;/taxa-selics&quot;)
     public ResponseEntity&lt;List&lt;SelicEntity&gt;&gt; buscaTaxaSelics() throws NotFoundException {
 <span class="nc" id="L49">        List&lt;SelicEntity&gt; dadosInterestRatesEntity = interestRatesService.getAllTaxaSelics();</span>
 <span class="nc" id="L50">        return new ResponseEntity&lt;&gt;(dadosInterestRatesEntity, HttpStatus.ACCEPTED);</span>
     }
 
-    @ApiOperation( value = &quot;Criar uma tabela ----------&quot;)
-    @GetMapping(&quot;/deletar/{codigo_Serie}&quot;)
+    @ApiOperation( value = &quot;Deletar os dados especificados&quot;)
+    @DeleteMapping(&quot;/deletar/{codigo_Serie}&quot;)
     public String deleteTaxaSelic(@PathVariable(&quot;codigo_Serie&quot;) int codigo_Serie)
     {
         try

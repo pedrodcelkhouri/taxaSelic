@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-taxa_selic,br.com.ibm.training.javatraining.controller,SelicController,41,7,0,0,9,2,4,2,4,2
-taxa_selic,br.com.ibm.training.javatraining.swagger,SwaggerConfig,0,32,0,0,0,14,0,3,0,3
-taxa_selic,br.com.ibm.training.javatraining.service,SelicServiceImplement,176,3,12,0,38,1,18,1,12,1
+taxa_selic,br.com.ibm.training.javatraining.controller,SelicController,48,0,0,0,11,0,6,0,6,0
+taxa_selic,br.com.ibm.training.javatraining.swagger,SwaggerConfig,32,0,0,0,14,0,3,0,3,0
+taxa_selic,br.com.ibm.training.javatraining.service,SelicServiceImplement,179,0,12,0,39,0,19,0,13,0
 taxa_selic,br.com.ibm.training.javatraining,SelicApplication,5,3,0,0,2,1,1,1,1,1
