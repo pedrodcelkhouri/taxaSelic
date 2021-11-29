@@ -20,7 +20,7 @@ public class SelicController {
     @Autowired
     private SelicService interestRatesService;
 
-    @ApiOperation( value = "Gerar a tabela de dados da Api da Taxa Selic")
+    @ApiOperation( value = "Salvar os dados da Api da Taxa Selic")
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public List<SelicRequest> saveTaxaSelic() {

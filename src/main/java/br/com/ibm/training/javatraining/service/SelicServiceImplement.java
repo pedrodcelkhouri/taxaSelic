@@ -2,7 +2,7 @@ package br.com.ibm.training.javatraining.service;
 
 import br.com.ibm.training.javatraining.dto.SelicRequest;
 import br.com.ibm.training.javatraining.entity.SelicEntity;
-import br.com.ibm.training.javatraining.integration.client.SelicFeign;
+import br.com.ibm.training.javatraining.integration.SelicFeign;
 import br.com.ibm.training.javatraining.repositories.SelicRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

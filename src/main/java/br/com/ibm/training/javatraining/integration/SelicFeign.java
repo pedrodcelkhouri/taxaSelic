@@ -1,4 +1,4 @@
-package br.com.ibm.training.javatraining.integration.client;
+package br.com.ibm.training.javatraining.integration;
 
 
 import br.com.ibm.training.javatraining.dto.SelicRequest;
