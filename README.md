@@ -1,4 +1,4 @@
-## Desafio Interest Rates IBM
+## Interest Rates
 
 > Projeto com o objetivo de ler, salvar e apresentar o acúmulo de dados da taxa SELIC disponibilizadas pelo Banco Central.
 
